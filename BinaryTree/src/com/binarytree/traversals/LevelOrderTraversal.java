@@ -12,6 +12,8 @@ public class LevelOrderTraversal {
 		final BinaryTreeNode root = BinaryTree.createBinaryTree();
 
 		BinaryTreePrinter.printNode(root);
+		
+		System.out.println("Exit level order traversal");
 	}
 
 }
