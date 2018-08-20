@@ -81,4 +81,24 @@ public class BinaryTree {
 		
 		return rootNode;
 	}
+	
+	/**
+	 * This method recursively computes the height of binary tree.
+	 * @param node
+	 * @return integer
+	 */
+	public static int getHeightOfBinaryTree(final BinaryTreeNode node) {
+		
+		if (node == null) {
+			return 0;
+		}
+		
+		int leftHeight = getHeightOfBinaryTree(node.getLeftChild());
+		int rightHeight = getHeightOfBinaryTree(node.getRightChild());
+		
+		if (leftHeight > rightHeight) 
+           return leftHeight + 1;
+        else
+        	return rightHeight + 1;
+	}
 }

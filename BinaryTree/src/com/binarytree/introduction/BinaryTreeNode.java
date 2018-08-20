@@ -55,4 +55,9 @@ public class BinaryTreeNode {
 	public void setRightChild(final BinaryTreeNode rightChild) {
 		this.rightChild = rightChild;
 	}
+	
+	@Override
+	public String toString() {
+		return new Integer(this.key).toString();
+	}
 }
