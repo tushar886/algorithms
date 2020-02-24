@@ -22,7 +22,7 @@ public class UndirectedGraphStructure {
          //Create a new vertex object with this label
         GraphVertex vertex = new GraphVertex(label);
         //Now removwe this vertex from edges list if any and also remve it from the main vertex list
-        adjVertices.values().stream().forEach(e -> e.remove(vertex));
+        adjVertices.values().forEach(e -> e.remove(vertex));
         adjVertices.remove(vertex);
     }
 
@@ -49,5 +49,24 @@ public class UndirectedGraphStructure {
         }
     }
 
+    public List<GraphVertex> getAdjacentVertices(final String label) {
+        final GraphVertex vertex = new GraphVertex(label);
+        return adjVertices.get(vertex);
+    }
 
+    public UndirectedGraphStructure createUnDirectedGraph() {
+        UndirectedGraphStructure graph = new UndirectedGraphStructure();
+        graph.addVertex("Bob");
+        graph.addVertex("Alice");
+        graph.addVertex("Mark");
+        graph.addVertex("Rob");
+        graph.addVertex("Maria");
+        graph.addEdge("Bob", "Alice");
+        graph.addEdge("Bob", "Rob");
+        graph.addEdge("Alice", "Mark");
+        graph.addEdge("Rob", "Mark");
+        graph.addEdge("Alice", "Maria");
+        graph.addEdge("Rob", "Maria");
+        return graph;
+    }
 }
