@@ -14,6 +14,10 @@ public class UndirectedGraphStructure {
         this.adjVertices = new HashMap<>();
     }
 
+    public Map<GraphVertex, List<GraphVertex>> getGraphFullAdjData() {
+        return this.adjVertices;
+    }
+
     public void addVertex(final String label) {
         adjVertices.putIfAbsent(new GraphVertex(label), new ArrayList<>());
     }
@@ -56,17 +60,17 @@ public class UndirectedGraphStructure {
 
     public UndirectedGraphStructure createUnDirectedGraph() {
         UndirectedGraphStructure graph = new UndirectedGraphStructure();
-        graph.addVertex("Bob");
-        graph.addVertex("Alice");
-        graph.addVertex("Mark");
-        graph.addVertex("Rob");
-        graph.addVertex("Maria");
-        graph.addEdge("Bob", "Alice");
-        graph.addEdge("Bob", "Rob");
-        graph.addEdge("Alice", "Mark");
-        graph.addEdge("Rob", "Mark");
-        graph.addEdge("Alice", "Maria");
-        graph.addEdge("Rob", "Maria");
+        graph.addVertex("Delhi");
+        graph.addVertex("Gurgaon");
+        graph.addVertex("Faridabad");
+        graph.addVertex("Noida");
+        graph.addVertex("Gzb");
+        graph.addEdge("Delhi", "Gurgaon");
+        graph.addEdge("Gurgaon", "Faridabad");
+        graph.addEdge("Delhi", "Noida");
+        graph.addEdge("Noida", "Gzb");
+        graph.addEdge("Delhi", "Gzb");
+        graph.addEdge("Faridabad", "Gzb");
         return graph;
     }
 }

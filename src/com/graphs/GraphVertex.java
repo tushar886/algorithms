@@ -15,6 +15,13 @@ public class GraphVertex {
     }
 
     @Override
+    public String toString() {
+        return "GraphVertex{" +
+                "label='" + label + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
