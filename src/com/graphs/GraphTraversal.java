@@ -3,12 +3,12 @@ import java.util.*;
 
 public class GraphTraversal {
 
-    public static Set<GraphVertex> depthFirstTraversal(final UndirectedGraphStructure graph, final String rootLabel) {
+    public static Set<GraphVertex> depthFirstTraversal(final UndirectedGraphStructure graph, final GraphVertex rootVertex) {
         final Stack<GraphVertex> nodeStack = new Stack<>();
         final Set<GraphVertex> visited = new LinkedHashSet<>();
         Map<GraphVertex, List<GraphVertex>> masterAdjData =  graph.getGraphFullAdjData();
-        if (masterAdjData.containsKey(new GraphVertex(rootLabel))) {
-            nodeStack.push (new GraphVertex(rootLabel));
+        if (masterAdjData.containsKey(rootVertex)) {
+            nodeStack.push (rootVertex);
             while (!nodeStack.isEmpty()) {
                 GraphVertex vertex = nodeStack.pop();
                 if (!visited.contains(vertex)) {
@@ -22,13 +22,13 @@ public class GraphTraversal {
         return visited;
     }
 
-    public static Set<GraphVertex> breadthFirstTraversal(final UndirectedGraphStructure graph, final String rootLabel) {
+    public static Set<GraphVertex> breadthFirstTraversal(final UndirectedGraphStructure graph, final GraphVertex rootVertex) {
         final Queue<GraphVertex> nodeQueue = new LinkedList<>();
         final Set<GraphVertex> visited = new LinkedHashSet<>();
         Map<GraphVertex, List<GraphVertex>> masterAdjData =  graph.getGraphFullAdjData();
-        if (masterAdjData.containsKey(new GraphVertex(rootLabel))) {
-            nodeQueue.add(new GraphVertex(rootLabel));
-            visited.add(new GraphVertex(rootLabel));
+        if (masterAdjData.containsKey(rootVertex)) {
+            nodeQueue.add(rootVertex);
+            visited.add(rootVertex);
             while (!nodeQueue.isEmpty()) {
                 GraphVertex vertex = nodeQueue.poll();
                 for (GraphVertex vert : graph.getAdjacentVertices(vertex.getLabel())) {
@@ -46,10 +46,11 @@ public class GraphTraversal {
         UndirectedGraphStructure graph = new UndirectedGraphStructure();
         UndirectedGraphStructure graph_data = graph.createUnDirectedGraph();
 
-        Set<GraphVertex> dfsTraversal = depthFirstTraversal(graph_data, "Delhi");
+        final GraphVertex rootVertex = graph.getVertex("Delhi");
+        Set<GraphVertex> dfsTraversal = depthFirstTraversal(graph_data, rootVertex);
         System.out.println("Depth First Traversal is as: " + dfsTraversal);
 
-        Set<GraphVertex> bfsTraversal = breadthFirstTraversal(graph_data, "Delhi");
+        Set<GraphVertex> bfsTraversal = breadthFirstTraversal(graph_data, rootVertex);
         System.out.println("Breadth First Traversal is as: " + bfsTraversal);
     }
 }

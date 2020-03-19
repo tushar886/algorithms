@@ -73,4 +73,12 @@ public class UndirectedGraphStructure {
         graph.addEdge("Faridabad", "Gzb");
         return graph;
     }
+
+    public GraphVertex getVertex(final String label) {
+        return this.adjVertices.keySet()
+                .stream()
+                .filter(graphVertex -> graphVertex.getLabel().equals(label))
+                .findFirst()
+                .orElse(null);
+    }
 }
